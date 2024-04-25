@@ -3,7 +3,7 @@ require 'conn.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
+    $username = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');  //Cleans the inputs
     $password = $_POST['password'];
 
     if (!empty($username) && !empty($password)) {
